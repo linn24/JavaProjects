@@ -23,8 +23,10 @@ public class Problem1 {
             return 0;
         }else {
             for (int i = 0; i < intervals.size(); i++){
+                // reset curCount
                 curCount = 0;
                 
+                // when impossible to have higher count than current maxCount
                 if((curCount + intervals.size() - i) <= maxCount){                    
                     break;
                 }else{
@@ -35,8 +37,10 @@ public class Problem1 {
 
                         // get next intervals to compare starting from (i + 1) to (size - 1)
                         for (int j = (i + 1); j < intervals.size(); j++){
+                            // reset curCount
                             curCount = 0;
                             
+                            // when impossible to have higher count than current maxCount
                             if((curCount + intervals.size() - j) <= maxCount){
                                 break;
                             }else{
@@ -47,24 +51,30 @@ public class Problem1 {
                                     
                                     // find overlapInterval between currentInterval and intervalToCompare
                                     overlapInterval = check.getOverlapInterval(currentInterval, intervalToCompare);
+                                    
                                     if (overlapInterval != null){
-                                        // increment maxCount
+                                        // increment curCount
                                         curCount = 2;
                                         
-                                        // find other intervals overlapping with overlapInterval
+                                        // find other intervals overlapping with overlapInterval starting from (j + 1) to (size - 1)
                                         for (int k = (j + 1); k < intervals.size(); k++){
+                                            // when impossible to have higher count than current maxCount
                                             if((curCount + intervals.size() - k) <= maxCount){
                                                 break;
                                             }else{
                                                 if(intervals.get(k) == null){
                                                     return 0;
                                                 }else{
+                                                    // if another interval overlapping with overlapInterval is found
                                                     if(check.isOverlapped(overlapInterval, intervals.get(k))){
+                                                        // increment curCount
                                                         curCount++;
                                                     }
                                                 }
                                             }
                                         }// end 3rd for   
+                                        
+                                        // update maxCount
                                         if (curCount > maxCount){
                                             maxCount = curCount;
                                         }

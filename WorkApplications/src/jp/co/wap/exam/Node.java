@@ -11,6 +11,4 @@ package jp.co.wap.exam;
 public class Node<E> {
     E node;
     Node<E> next;
-    
-    
 }

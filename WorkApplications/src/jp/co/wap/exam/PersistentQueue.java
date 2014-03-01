@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
  * @param <E>
  */
 public class PersistentQueue<E> {
-    //use linked list instead of array list
+    // use linked list instead of array list
     // since linked list is a better choice when insertion and deletion are frequent.
     private LinkedList<E> queue;
     

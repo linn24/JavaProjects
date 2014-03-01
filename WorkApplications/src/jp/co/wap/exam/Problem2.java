@@ -5,7 +5,6 @@
 package jp.co.wap.exam;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import jp.co.wap.exam.lib.Interval;
 
@@ -39,38 +38,45 @@ public class Problem2 {
                         if (secondInterval == null){
                             return 0;
                         }
+                        
+                        // check if currentInterval and secondInterval are overlapped
+                        // if not overlapped,
                         if(!check.isOverlapped(currentInterval, secondInterval)){
+                            // clear result list
                             result.clear();
+                            
+                            // add currentInterval and secondInterval to result list
                             result.add(currentInterval);
-                            System.out.println(currentInterval.toString() + " is added");
                             result.add(secondInterval);
-                            System.out.println(secondInterval.toString() + " is added");
+                            
+                            // update totalTime
                             totalTime = currentInterval.getIntervalMinute() + secondInterval.getIntervalMinute();
-                            System.out.println("current total: " + totalTime);
-
+                            
+                            // get next intervals to add
                             for (int k = (j + 1); k < intervals.size(); k++){
                                 nextInterval = intervals.get(k);
                                 if (nextInterval == null){
                                     return 0;
                                 }
 
-                                // check against intervals from result list
+                                // check against intervals from result list if nextInterval is overlapped with any of them
+                                // if not overlapped,
                                 if(!check.isOverlapped(nextInterval, result)){
+                                    // add nextInterval to result list
                                     result.add(nextInterval);
-                                    System.out.println(nextInterval.toString() + " is added");
-
-                                    totalTime += nextInterval.getIntervalMinute();
-                                    System.out.println("current total: " + totalTime);                    
+                                    
+                                    // update totalTime
+                                    totalTime += nextInterval.getIntervalMinute();                    
                                 }                        
-                            }
-                        }               
-                        if (totalTime > maxWorkingTime){
-                            maxWorkingTime = totalTime;
-                            System.out.println("current max: " + maxWorkingTime);
-                        }                        
-                    }
-                                        
-                }
+                            }// end 3rd for
+                            
+                            // update maxWorkingTime
+                            if (totalTime > maxWorkingTime){
+                                maxWorkingTime = totalTime;
+                            } 
+                        }                    
+                    }// end 2nd for                            
+                }// end 1st for
             }
         }
         return maxWorkingTime;

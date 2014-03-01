@@ -17,8 +17,8 @@ import jp.co.wap.exam.lib.Interval;
 public class Test {
     public static void main(String[] args){
         Test test = new Test();
-        test.testProblem1Usage();
-        //test.testProblem2Usage();
+        //test.testProblem1Usage();
+        test.testProblem2Usage();
         //test.testQuestion2Usage();
     }
     

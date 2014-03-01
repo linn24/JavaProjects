@@ -15,11 +15,14 @@ public class CheckOverlap {
     public Interval getOverlapInterval(Interval current, Interval toCompare){
         Interval overlapInterval = null;
         
-        // when one of them falls into another
+        // when toCompare interval falls within current interval
         if((current.getBeginMinuteUnit() < toCompare.getBeginMinuteUnit()) && (current.getEndMinuteUnit() > toCompare.getEndMinuteUnit())){
             overlapInterval = new Interval(toCompare.getBegin(), toCompare.getEnd());
+        
+        // when current interval falls within toCompare interval
         }else if((current.getBeginMinuteUnit() > toCompare.getBeginMinuteUnit()) && (current.getEndMinuteUnit() < toCompare.getEndMinuteUnit())){
             overlapInterval = new Interval(current.getBegin(), current.getEnd());
+        
         // when current interval starts later
         }else if(current.getBeginMinuteUnit() > toCompare.getBeginMinuteUnit()){
             if (toCompare.getEndMinuteUnit() - current.getBeginMinuteUnit() > 0){
@@ -30,9 +33,14 @@ public class CheckOverlap {
             if (current.getEndMinuteUnit() - toCompare.getBeginMinuteUnit() > 0){
                 overlapInterval = new Interval(toCompare.getBegin(), current.getEnd());
             }
+        
+        // when both start at the same time
         }else{
+            // when toCompare interval ends earlier
             if(current.getEndMinuteUnit() > toCompare.getEndMinuteUnit()){
                 overlapInterval = new Interval(toCompare.getBegin(), toCompare.getEnd());
+                
+            // when current interval ends earlier or both end at the same time
             }else{
                 overlapInterval = new Interval(current.getBegin(), current.getEnd());
             }            

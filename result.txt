@@ -1,13 +1,14 @@
+first for: [08:00-12:00]
 for [08:00-12:00] and [06:00-09:00]
 curCount: 2
 [08:00-09:00]---[11:00-13:30]
 maxCount: 2
- and [11:00-13:30]
-curCount: 2
-maxCount: 2
-for [06:00-09:00] and [11:00-13:30]
-for [11:00-13:30]total instructions executed: 11
+first for: [06:00-09:00]
+exit first for
+after first for
+total instructions executed: 6
 maxCount for figure 1: 2
+first for: [09:00-12:30]
 for [09:00-12:30] and [06:00-09:30]
 curCount: 2
 [09:00-09:30]---[12:00-14:30]
@@ -20,20 +21,9 @@ curCount: 2
 [12:00-12:30]---[11:00-13:30]
 curCount (in): 3
 maxCount: 3
- and [10:00-10:30]
-curCount: 2
-[10:00-10:30]---[11:00-13:30]
-maxCount: 3
- and [11:00-13:30]
-curCount: 2
-maxCount: 3
-for [06:00-09:30] and [12:00-14:30]
- and [10:00-10:30]
- and [11:00-13:30]
-for [12:00-14:30] and [10:00-10:30]
- and [11:00-13:30]
-curCount: 2
-maxCount: 3
-for [10:00-10:30] and [11:00-13:30]
-for [11:00-13:30]total instructions executed: 30
+first for: [06:00-09:30]
+for [06:00-09:30]first for: [12:00-14:30]
+exit first for
+after first for
+total instructions executed: 15
 maxCount for figure 2: 3

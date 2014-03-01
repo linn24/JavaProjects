@@ -26,6 +26,8 @@ public class Problem1 {
             for (int i = 0; i < intervals.size(); i++){
                 if(intervals.get(i) == null){
                     return 0;
+                }else if((curCount + intervals.size() - i) < maxCount){
+                    break;
                 }else{
                     currentInterval = intervals.get(i);
                     System.out.print("for " + currentInterval.toString());
@@ -35,6 +37,8 @@ public class Problem1 {
                         
                         if(intervals.get(j) == null){
                             return 0;
+                        }else if((curCount + intervals.size() - j) < maxCount){
+                            break;
                         }else{
                             intervalToCompare = intervals.get(j);
                             System.out.println(" and " + intervalToCompare.toString());
@@ -49,6 +53,8 @@ public class Problem1 {
                                 for (int k = (j + 1); k < intervals.size(); k++){
                                     if(intervals.get(k) == null){
                                         return 0;
+                                    }else if((curCount + intervals.size() - k) < maxCount){
+                                        break;
                                     }else{
                                         System.out.println(overlapInterval.toString() + "---" + intervals.get(k).toString());
                                         if(check.isOverlapped(overlapInterval, intervals.get(k))){

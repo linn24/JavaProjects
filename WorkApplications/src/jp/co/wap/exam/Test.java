@@ -17,15 +17,16 @@ import jp.co.wap.exam.lib.Interval;
 public class Test {
     public static void main(String[] args){
         Test test = new Test();
-        //test.testProblem1Usage();
+        test.testProblem1Usage();
         test.testProblem2Usage();
-        //test.testQuestion2Usage();
+        test.testQuestion2Usage();
     }
     
     public void testProblem1Usage(){
         Problem1 p = new Problem1();
         
         // example: Figure 1
+        
         Interval interval1 = new Interval("08:00", "12:00");
         Interval interval2 = new Interval("06:00", "09:00");
         Interval interval3 = new Interval("11:00", "13:30");
@@ -36,7 +37,15 @@ public class Test {
         List<Interval> figure2 = Arrays.asList(new Interval("09:00", "12:30"),
                 new Interval("06:00", "09:30"), new Interval("12:00", "14:30"),
                 new Interval("10:00", "10:30"), new Interval("11:00", "13:30"));
-        System.out.println("maxCount for figure 2: " + p.getMaxIntervalOverlapCount(figure2));    
+        System.out.println("maxCount for figure 2: " + p.getMaxIntervalOverlapCount(figure2)); 
+        
+        
+        List<Interval> figure3 = Arrays.asList(
+                new Interval("06:00", "08:30"), new Interval("09:00", "11:00"),
+                new Interval("12:30", "14:00"), new Interval("08:00", "09:00"),
+                new Interval("10:30", "14:00"), new Interval("09:00", "11:30"));
+        System.out.println("maxCount for figure 3: " + p.getMaxIntervalOverlapCount(figure3));    
+    
     }
     
     public void testProblem2Usage(){
@@ -47,6 +56,13 @@ public class Test {
                 new Interval("12:30", "14:00"), new Interval("08:00", "09:00"),
                 new Interval("10:30", "14:00"), new Interval("09:00", "11:30"));
         System.out.println("maxWorkingTime: " + p.getMaxWorkingTime(intervals));
+        
+        List<Interval> intervals2 = Arrays.asList(
+                new Interval("09:00", "12:30"), new Interval("10:00", "11:30"),
+                new Interval("06:00", "09:30"), new Interval("12:00", "14:30"),
+                new Interval("10:00", "10:30"), new Interval("11:00", "13:30"));
+        System.out.println("maxWorkingTime (2): " + p.getMaxWorkingTime(intervals2));
+        
     }
     
     public void testQuestion2Usage(){
@@ -61,10 +77,10 @@ public class Test {
         strList.print();
         
         PersistentQueue pq = new PersistentQueue(strList);
-        pq.enqueue("4");
+        pq = pq.enqueue("4");
         pq.print();
         System.out.println(pq.peek());
-        pq.dequeue();
+        pq = pq.dequeue();
         pq.print();
     }    
     

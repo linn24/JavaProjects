@@ -41,7 +41,7 @@ public class Problem1 {
                             curCount = 0;
                             
                             // when impossible to have higher count than current maxCount
-                            if((curCount + intervals.size() - j) <= maxCount){
+                            if((curCount + intervals.size() - j + 1) <= maxCount){
                                 break;
                             }else{
                                 if(intervals.get(j) == null){

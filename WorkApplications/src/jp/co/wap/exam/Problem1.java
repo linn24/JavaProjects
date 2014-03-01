@@ -16,7 +16,6 @@ public class Problem1 {
     
     public int getMaxIntervalOverlapCount(List<Interval> intervals){
         // TODO: Implement this method
-        int exeCount = 0; // to check performance
         int maxCount = 0;
         int curCount = 0;
         Interval currentInterval, intervalToCompare, overlapInterval;
@@ -45,14 +44,13 @@ public class Problem1 {
                                     return 0;
                                 }else{
                                     intervalToCompare = intervals.get(j);
-                                    System.out.println(" and " + intervalToCompare.toString());
+                                    
                                     // find overlapInterval between currentInterval and intervalToCompare
                                     overlapInterval = check.getOverlapInterval(currentInterval, intervalToCompare);
                                     if (overlapInterval != null){
                                         // increment maxCount
                                         curCount = 2;
-                                        System.out.println("curCount: " + curCount);
-
+                                        
                                         // find other intervals overlapping with overlapInterval
                                         for (int k = (j + 1); k < intervals.size(); k++){
                                             if((curCount + intervals.size() - k) <= maxCount){
@@ -61,38 +59,23 @@ public class Problem1 {
                                                 if(intervals.get(k) == null){
                                                     return 0;
                                                 }else{
-                                                    System.out.println(overlapInterval.toString() + "---" + intervals.get(k).toString());
                                                     if(check.isOverlapped(overlapInterval, intervals.get(k))){
                                                         curCount++;
-                                                        System.out.println("curCount (in): " + curCount);                                
-                                                        exeCount++;
                                                     }
                                                 }
-                                                exeCount++;
                                             }
-                                            exeCount++;
                                         }// end 3rd for   
                                         if (curCount > maxCount){
                                             maxCount = curCount;
-                                            exeCount++;
                                         }
-                                        System.out.println("maxCount: " + maxCount);
-                                        exeCount++;
                                     }                             
                                 }
-                                exeCount++;
-                            }                                
-                            exeCount++;
+                            }
                         }// end 2nd for
                     }
-                    exeCount++;
-                }                
-                exeCount++;
-            }// end 1st for         
-            System.out.println("after first for");
+                }
+            }// end 1st for
         }
-        exeCount++;
-        System.out.println("total instructions executed: " + exeCount);
         return maxCount;
     }
     
